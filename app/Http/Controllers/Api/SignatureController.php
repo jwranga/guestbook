@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+
 use App\Signature;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,11 +12,11 @@ class SignatureController extends Controller
 {
     public function index()
     {
-        $signatures = Signature::lsatest()
+        $signatures = Signature::latest()
             ->ignoreFlaged()
             ->paginate(20);
         
-        return SignatureRecource::collection($signatures);
+        return SignatureResource::collection($signatures);
     }
     
     public function show(Signature $signature)
@@ -25,7 +26,7 @@ class SignatureController extends Controller
     
     public function store(Request $request)
     {
-        $signature = $this->validate([
+        $signature = $this->validate($request, [
             'name' => 'requuired|min:3|max:50',
             'email' => 'required|email',
             'body' => 'required|min:3',

@@ -14,13 +14,18 @@ class Signature extends Model
         'flagged_at',
     ];
     
-    public function scopeIgnoreFlagged($query)
+    public function scopeIgnoreFlaged($query)
     {
         return $query->where('flagged_at', null);
     }
     
-    public function flaged()
+    public function flagged()
     {
-        return $this->update(['flagged_at' => Carbone::now()]);
+        return $this->update(['flagged_at' => Carbon::now()]);
+    }
+    
+    public function getAvatarAttribute()
+    {
+        return sprintf('https://www.gravatar.com/avatar/%s?s=100', md5($this->email));
     }
 }
