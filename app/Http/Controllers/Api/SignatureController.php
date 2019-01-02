@@ -27,7 +27,7 @@ class SignatureController extends Controller
     public function store(Request $request)
     {
         $signature = $this->validate($request, [
-            'name' => 'requuired|min:3|max:50',
+            'name' => 'required|min:3|max:50',
             'email' => 'required|email',
             'body' => 'required|min:3',
         ]);
