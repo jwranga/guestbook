@@ -28,10 +28,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component(
-        'signatures',
-        require('./components/Signatures.vue').default
-);
+Vue.component('signatures',require('./components/Signatures.vue').default);
 
 Vue.component('signature-form', require('./components/SignatureForm.vue').default);
 
